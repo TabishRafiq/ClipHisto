@@ -79,10 +79,10 @@ namespace ClipHisto
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+           
             string currentData = Clipboard.GetText();
            
-            if (currentData != lastData)
+            if (currentData != lastData && currentData != null)
             {
                 mainListbox.BeginUpdate();
 

@@ -43,14 +43,18 @@
             this.itemsToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainListbox = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.PictureBox();
             this.clearlist_button = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.icon = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.rightClickMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -69,9 +73,10 @@
             this.startWithPCToolStripMenuItem,
             this.historyToolStripMenuItem,
             this.toolStripSeparator1,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.rightClickMenu.Name = "contextMenuStrip1";
-            this.rightClickMenu.Size = new System.Drawing.Size(143, 104);
+            this.rightClickMenu.Size = new System.Drawing.Size(143, 126);
             // 
             // openToolStripMenuItem
             // 
@@ -159,6 +164,12 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
             // mainListbox
             // 
             this.mainListbox.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -200,6 +211,7 @@
             this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.close.TabIndex = 3;
             this.close.TabStop = false;
+            this.toolTip1.SetToolTip(this.close, "Hide");
             this.close.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // clearlist_button
@@ -214,6 +226,7 @@
             this.clearlist_button.TabIndex = 4;
             this.clearlist_button.TabStop = true;
             this.clearlist_button.Text = "Clear All";
+            this.toolTip1.SetToolTip(this.clearlist_button, "Clear all items in the list");
             this.clearlist_button.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label2
@@ -221,11 +234,26 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(14, 9);
+            this.label2.Location = new System.Drawing.Point(40, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "ClipHisto";
+            // 
+            // icon
+            // 
+            this.icon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.icon.Image = ((System.Drawing.Image)(resources.GetObject("icon.Image")));
+            this.icon.Location = new System.Drawing.Point(19, 10);
+            this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(20, 24);
+            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icon.TabIndex = 6;
+            this.icon.TabStop = false;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.SystemColors.MenuBar;
             // 
             // Form1
             // 
@@ -233,6 +261,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(295, 395);
+            this.Controls.Add(this.icon);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clearlist_button);
             this.Controls.Add(this.close);
@@ -250,6 +279,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.rightClickMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,6 +306,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.LinkLabel clearlist_button;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox icon;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
