@@ -17,7 +17,7 @@ namespace ClipHisto
         string lastData;
         public Form1()
         {
-             this.Visible = false;
+            this.Visible = false;
             InitializeComponent();
             
         }
@@ -72,8 +72,9 @@ namespace ClipHisto
             Font n = new Font("Segoe UI", 7.5f, FontStyle.Italic);
             e.Graphics.DrawString(textLimiter(co.data,42), e.Font, databr, e.Bounds.X + 5, e.Bounds.Y, StringFormat.GenericDefault);
             e.Graphics.DrawString(co.time, n, timebr, e.Bounds.X + 5, e.Bounds.Y + 17, StringFormat.GenericDefault);
-            //databr.Dispose();
-            //e.Graphics.Flush();
+            databr.Dispose();
+            timebr.Dispose();
+            e.Graphics.Flush();
             e.DrawFocusRectangle();
         }
 
