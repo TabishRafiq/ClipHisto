@@ -52,9 +52,9 @@ namespace ClipHisto
 
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
         {
-            if (listBox1.Items.Count <= 0)
+            if (mainListbox.Items.Count <= 0)
                 return;
-            var rect1 = new Rectangle(e.Bounds.X, e.Bounds.Y, listBox1.Width, 32);
+            var rect1 = new Rectangle(e.Bounds.X, e.Bounds.Y, mainListbox.Width, 32);
             var rect = new Rectangle(e.Bounds.X, e.Bounds.Y, 20, 20);
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 e = new DrawItemEventArgs(e.Graphics,
@@ -67,7 +67,7 @@ namespace ClipHisto
             Brush timebr = new SolidBrush(Color.FromArgb(255, 9, 136, 239));
 
             e.DrawBackground();
-            var co = (clipObject)listBox1.Items[e.Index];
+            var co = (clipObject)mainListbox.Items[e.Index];
             Font n = new Font("Segoe UI", 7.5f, FontStyle.Italic);
             e.Graphics.DrawString(textLimiter(co.data,42), e.Font, databr, e.Bounds.X + 5, e.Bounds.Y, StringFormat.GenericDefault);
             e.Graphics.DrawString(co.time, n, timebr, e.Bounds.X + 5, e.Bounds.Y + 17, StringFormat.GenericDefault);
@@ -83,18 +83,18 @@ namespace ClipHisto
            
             if (currentData != lastData)
             {
-                listBox1.BeginUpdate();
+                mainListbox.BeginUpdate();
 
                 clipObject co = new clipObject();
                 co.data = currentData;
                 co.time = DateTime.Now.ToLongTimeString();
-                listBox1.Items.Insert(0, co);
+                mainListbox.Items.Insert(0, co);
                 lastData = currentData;
 
-                if (listBox1.Items.Count > Properties.Settings.Default.history_level)
-                    listBox1.Items.RemoveAt(Properties.Settings.Default.history_level - 1);
+                if (mainListbox.Items.Count > Properties.Settings.Default.history_level)
+                    mainListbox.Items.RemoveAt(Properties.Settings.Default.history_level - 1);
 
-                listBox1.EndUpdate();
+                mainListbox.EndUpdate();
             }
           
         }
@@ -119,7 +119,7 @@ namespace ClipHisto
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var op = (clipObject)listBox1.Items[listBox1.SelectedIndex];
+            var op = (clipObject)mainListbox.Items[mainListbox.SelectedIndex];
             Clipboard.SetText(op.data);
         }
 
@@ -193,7 +193,7 @@ namespace ClipHisto
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            listBox1.Items.Clear();
+            mainListbox.Items.Clear();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
