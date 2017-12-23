@@ -196,6 +196,7 @@ namespace ClipHisto
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             mainListbox.Items.Clear();
+            GC.Collect();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
