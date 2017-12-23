@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.rightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.startWithPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,29 +49,29 @@
             this.close = new System.Windows.Forms.PictureBox();
             this.clearlist_button = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1.SuspendLayout();
+            this.rightClickMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.ContextMenuStrip = this.rightClickMenu;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "ClipHisto";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // contextMenuStrip1
+            // rightClickMenu
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.toolStripSeparator2,
             this.startWithPCToolStripMenuItem,
             this.historyToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 104);
+            this.rightClickMenu.Name = "contextMenuStrip1";
+            this.rightClickMenu.Size = new System.Drawing.Size(143, 104);
             // 
             // openToolStripMenuItem
             // 
@@ -183,10 +183,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 368);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 370);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 15);
+            this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Double click to copy";
             // 
@@ -208,7 +208,7 @@
             this.clearlist_button.AutoSize = true;
             this.clearlist_button.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearlist_button.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.clearlist_button.Location = new System.Drawing.Point(227, 371);
+            this.clearlist_button.Location = new System.Drawing.Point(227, 370);
             this.clearlist_button.Name = "clearlist_button";
             this.clearlist_button.Size = new System.Drawing.Size(51, 15);
             this.clearlist_button.TabIndex = 4;
@@ -248,7 +248,7 @@
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.rightClickMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -258,7 +258,7 @@
         #endregion
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip rightClickMenu;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ListBox mainListbox;

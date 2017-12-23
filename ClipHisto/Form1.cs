@@ -54,15 +54,16 @@ namespace ClipHisto
         {
             if (mainListbox.Items.Count <= 0)
                 return;
-            var rect1 = new Rectangle(e.Bounds.X, e.Bounds.Y, mainListbox.Width, 32);
-            var rect = new Rectangle(e.Bounds.X, e.Bounds.Y, 20, 20);
+
+            var rect = new Rectangle(e.Bounds.X, e.Bounds.Y, mainListbox.Width, 32);
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 e = new DrawItemEventArgs(e.Graphics,
-                                          e.Font, rect1,
+                                          e.Font, rect,
                                           e.Index,
                                           e.State ^ DrawItemState.Selected,
                                           Color.White,
-                                          Color.FromArgb(255, 217, 236, 252)); //Choose the color
+                                          Color.FromArgb(255, 217, 236, 252)); 
+
             Brush databr = new SolidBrush(Color.FromArgb(255, 5, 5, 5));
             Brush timebr = new SolidBrush(Color.FromArgb(255, 9, 136, 239));
 
@@ -71,8 +72,8 @@ namespace ClipHisto
             Font n = new Font("Segoe UI", 7.5f, FontStyle.Italic);
             e.Graphics.DrawString(textLimiter(co.data,42), e.Font, databr, e.Bounds.X + 5, e.Bounds.Y, StringFormat.GenericDefault);
             e.Graphics.DrawString(co.time, n, timebr, e.Bounds.X + 5, e.Bounds.Y + 17, StringFormat.GenericDefault);
-            databr.Dispose();
-            e.Graphics.Flush();
+            //databr.Dispose();
+            //e.Graphics.Flush();
             e.DrawFocusRectangle();
         }
 
