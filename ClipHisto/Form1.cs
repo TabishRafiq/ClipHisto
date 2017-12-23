@@ -206,6 +206,12 @@ namespace ClipHisto
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.Silver, ButtonBorderStyle.Solid);
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            about aboutbox = new about();
+            aboutbox.ShowDialog();
+        }
     }
     public class clipObject
         {
