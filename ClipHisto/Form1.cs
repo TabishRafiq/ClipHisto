@@ -1,12 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClipHisto
@@ -80,10 +74,11 @@ namespace ClipHisto
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
-            string currentData = Clipboard.GetText();
-           
-            if (currentData != lastData && currentData != null)
+            if (Clipboard.GetText().ToString() == "")
+                return;
+
+            string currentData = Clipboard.GetText();          
+            if (currentData != lastData )
             {
                 mainListbox.BeginUpdate();
 
@@ -214,6 +209,7 @@ namespace ClipHisto
             about aboutbox = new about();
             aboutbox.ShowDialog();
         }
+
     }
     public class clipObject
         {

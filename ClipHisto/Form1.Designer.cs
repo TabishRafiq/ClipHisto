@@ -179,7 +179,7 @@
             this.mainListbox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainListbox.FormattingEnabled = true;
             this.mainListbox.ItemHeight = 32;
-            this.mainListbox.Location = new System.Drawing.Point(16, 40);
+            this.mainListbox.Location = new System.Drawing.Point(16, 42);
             this.mainListbox.Name = "mainListbox";
             this.mainListbox.Size = new System.Drawing.Size(263, 320);
             this.mainListbox.TabIndex = 1;
@@ -274,7 +274,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Form1a";
+            this.Text = "ClipHisto";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
