@@ -184,6 +184,7 @@
             this.mainListbox.Size = new System.Drawing.Size(263, 320);
             this.mainListbox.TabIndex = 1;
             this.mainListbox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
+            this.mainListbox.SelectedIndexChanged += new System.EventHandler(this.mainListbox_SelectedIndexChanged);
             this.mainListbox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // timer1

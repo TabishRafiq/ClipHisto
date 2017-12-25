@@ -13,21 +13,25 @@ namespace ClipHisto
         {
             this.Visible = false;
             InitializeComponent();
-            
+            if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Length > 1)
+            {
+                notifyIcon1.ShowBalloonTip(1, "ClipHisto", "The application is already running in backgorund.", ToolTipIcon.Warning);
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+            }           
+            notifyIcon1.ShowBalloonTip(1, "ClipHisto", "Your application is here in system tray. Double click icon to launch.", ToolTipIcon.None);
         }
         private void SetStartup()
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-
             if (ClipHisto.Properties.Settings.Default.start_with_pc == true)
             rk.SetValue("ClipHisto", Application.ExecutablePath.ToString());
             else
             rk.DeleteValue("ClipHisto", false);
-
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           // base.Hide();
+         
+
             this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, Screen.PrimaryScreen.Bounds.Height - this.Height-40);
             SetStartup();
             unCheckAll();
@@ -210,6 +214,27 @@ namespace ClipHisto
             aboutbox.ShowDialog();
         }
 
+        private void mainListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool IsAlreadyOpen(Type formType)
+
+        {
+           bool isOpen = false;
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.GetType() == formType)
+                {
+                    f.BringToFront();
+                    f.WindowState = FormWindowState.Normal;
+                    MessageBox.Show("Already open");
+                    isOpen = true;
+                }
+            }
+            return isOpen;
+        }
     }
     public class clipObject
         {
