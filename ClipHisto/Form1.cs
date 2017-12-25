@@ -219,22 +219,6 @@ namespace ClipHisto
 
         }
 
-        private bool IsAlreadyOpen(Type formType)
-
-        {
-           bool isOpen = false;
-            foreach (Form f in Application.OpenForms)
-            {
-                if (f.GetType() == formType)
-                {
-                    f.BringToFront();
-                    f.WindowState = FormWindowState.Normal;
-                    MessageBox.Show("Already open");
-                    isOpen = true;
-                }
-            }
-            return isOpen;
-        }
     }
     public class clipObject
         {
