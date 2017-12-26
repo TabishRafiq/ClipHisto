@@ -2,6 +2,9 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
+using System.Globalization;
+using System.Collections.Generic;
 
 namespace ClipHisto
 {
@@ -9,6 +12,7 @@ namespace ClipHisto
     {
         
         string lastData;
+        string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public Form1()
         {
             this.Visible = false;
@@ -45,6 +49,35 @@ namespace ClipHisto
                 itemsToolStripMenuItem3.Checked = true;
             else
                 itemsToolStripMenuItem4.Checked = true;
+
+            if(File.Exists(this.mydocpath + @"\data.txt"))
+            {
+                using (StreamReader r = new StreamReader(this.mydocpath + @"\data.txt"))
+                {
+                    string line;
+                    clipObject co=new clipObject();
+                    List<string> itemData = new List<string>();
+        
+                    while ((line = r.ReadLine()) != null)
+                    {
+                        DateTime dateValue;
+
+                        if(DateTime.TryParseExact(line, "yyyy-MM-dd, hh: mm: ss tt", new CultureInfo("en-US"), DateTimeStyles.None, out dateValue))
+                        {
+                            co.time = dateValue.ToString();
+                            co.data=String.Join(Environment.NewLine, itemData);
+                            itemData.Clear();
+                            mainListbox.Items.Add(co);
+                            co = new clipObject();
+                        }
+                        else
+                        {
+                            itemData.Add(line);
+                        }
+                       
+                    }
+                }
+            }
 
         }
 
@@ -88,7 +121,7 @@ namespace ClipHisto
 
                 clipObject co = new clipObject();
                 co.data = currentData;
-                co.time = DateTime.Now.ToLongTimeString();
+                co.time = DateTime.Now.ToString("yyyy-MM-dd, hh: mm: ss tt");
                 mainListbox.Items.Insert(0, co);
                 lastData = currentData;
 
@@ -131,6 +164,14 @@ namespace ClipHisto
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            System.IO.StreamWriter SaveFile = new System.IO.StreamWriter(mydocpath + @"\data.txt");
+            foreach (clipObject line in mainListbox.Items)
+            {
+                SaveFile.WriteLine(line.data.ToString());
+                SaveFile.WriteLine(line.time.ToString());
+            }
+            SaveFile.Flush();
             Application.Exit();
         }
 
@@ -217,6 +258,13 @@ namespace ClipHisto
         private void mainListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            //System.IO.StreamWriter SaveFile = new System.IO.StreamWriter(mydocpath + @"\data.txt");
+            //Console.WriteLine("close");
         }
 
     }
