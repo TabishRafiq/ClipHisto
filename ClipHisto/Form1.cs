@@ -19,7 +19,7 @@ namespace ClipHisto
             InitializeComponent();
             if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Length > 1)
             {
-                notifyIcon1.ShowBalloonTip(1, "ClipHisto", "The application is already running in backgorund.", ToolTipIcon.Warning);
+                notifyIcon1.ShowBalloonTip(1, "ClipHisto", "The application is already running in backgroud.", ToolTipIcon.Warning);
                 System.Diagnostics.Process.GetCurrentProcess().Kill();
             }           
             notifyIcon1.ShowBalloonTip(1, "ClipHisto", "Your application is here in system tray. Double click icon to launch.", ToolTipIcon.None);
